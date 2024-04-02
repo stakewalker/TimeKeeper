@@ -6,4 +6,4 @@ This is a bot with a mission:
 - Returns the time as a message response;
 - Process data (as you wish).
 
-This is a personal project created for tracking my work hours easily, enabling me to log my timecard to monitor the hours worked per day, week, and month
+This is a personal project created for tracking work hours easily, enabling me to log my timecard and monitor the hours worked per day, week, and month
