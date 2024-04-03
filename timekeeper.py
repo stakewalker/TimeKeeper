@@ -1,7 +1,7 @@
 # Keep listening to messages on Telegram group
 
 # If an image is sent, convert its contents to text and filter the time (hh:mm)
-# Otherwise if a message with "time" is received, use it
+# Otherwise if a message with "time" is received, use it instead
 
 # Print the data and ask user to confirm
 
