@@ -1,3 +1,6 @@
+import pytesseract
+import re
+
 def time_from_photo(img_obj):
     # Open the image file
     image = Image.open(img_obj)
