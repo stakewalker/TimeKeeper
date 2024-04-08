@@ -12,13 +12,13 @@ def time_from_photo(img_obj):
     return matches
 
 def save_to_sheets():
-  pass
+    pass
 
 def telegram_chat():
-  pass
+    pass
 
 def parse_data():
     pass
 
 def calculate_hours():
-  pass
+    pass
