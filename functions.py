@@ -17,5 +17,8 @@ def save_to_sheets():
 def telegram_chat():
   pass
 
+def parse_data():
+    pass
+
 def calculate_hours():
   pass
