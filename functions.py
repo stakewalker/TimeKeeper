@@ -47,3 +47,7 @@ def calculate_hours():
 
 def save_to_sheets(data):
     pass
+
+def exception():
+    # For special days, when manual editing will be required
+    pass
