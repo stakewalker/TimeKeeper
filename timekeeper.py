@@ -8,4 +8,3 @@
 # Save this data to the Google Sheets file 
 
 # If more than 4 registers are found in one day, calculate how many hours has passed 
-
