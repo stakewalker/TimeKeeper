@@ -1,1 +1,2 @@
 # libraries goes here
+# $ pip freeze > requirements.txt
