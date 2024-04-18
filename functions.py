@@ -44,8 +44,22 @@ def handle_callback_query(call):
 # Runs bot forever
 tl_bot.polling()
 
-def calculate_hours():
-    pass
+
+def elapsed_time(times_list):
+    total_seconds = 0
+    for i in range(0, len(times_list)-1, 2):
+        # Convert time strings to datetime objects
+        time1 = datetime.strptime(times_list[i], "%H:%M")
+        time2 = datetime.strptime(times_list[i+1], "%H:%M")
+        # Calculate time difference between the consecutive times
+        time_difference = time2 - time1
+        # Add time difference to total_seconds
+        total_seconds += time_difference.total_seconds()
+    # Convert total_seconds to HH:mm format
+    hours = int(total_seconds // 3600)
+    minutes = int((total_seconds % 3600) // 60)
+    return "{:02d}:{:02d}".format(hours, minutes)
+
 
 def save_to_sheets(data):
     pass
