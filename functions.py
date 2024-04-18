@@ -2,6 +2,7 @@ import pytesseract
 import re
 import telebot
 from telebot import types
+from datetime import datetime
 
 def time_from_photo(img_obj):
     # Open the image file
