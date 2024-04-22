@@ -1,10 +1,17 @@
-# Keep listening to messages on Telegram group
 
-# If an image is sent, convert its contents to text and filter the time (hh:mm)
-# Otherwise if a message with "time" is received, use it instead
+def main():
+    # Keep listening to messages on Telegram group
 
-# Print the data and ask user to confirm
+    # If an image is sent, convert its contents to text and filter the time (hh:mm)
+    # Otherwise if a message with "time" is received, use it instead
 
-# Save this data to the Google Sheets file 
+    # Print the data and ask user to confirm
 
-# If more than 4 registers are found in one day, calculate how many hours has passed 
+    # Save this data to the Google Sheets file 
+
+    # If more than 4 registers are found in one day, calculate how many hours has passed 
+    
+    pass
+
+if __name__ == "__main__":
+    main()
