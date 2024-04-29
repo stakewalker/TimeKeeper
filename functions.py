@@ -64,6 +64,6 @@ def elapsed_time(times_list):
 def save_to_sheets(data):
     pass
 
-def exception():
+def special_cases():
     # For special days, when manual editing will be required
     pass
