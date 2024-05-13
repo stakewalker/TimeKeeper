@@ -21,10 +21,10 @@ def handle_message(message):
         # Send a confirmation message with the markup
         tg_bot.send_message(message.chat.id, f"Is {result} it correct?", reply_markup=markup)
     elif contains_time(message.text):
-        # check if it's a time data
+        # check if it's time data
         # saves it
         # Otherwise continue
-        continue
+        pass
     else:
         tl_bot.send_message(message.chat.id, "I don't understand it.")
         ask_for_confirmation(message)
