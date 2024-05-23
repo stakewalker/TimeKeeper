@@ -44,7 +44,6 @@ def handle_callback_query(call):
 # Runs bot forever
 tg_bot.polling()
 
-
 def elapsed_time(times_list):
     total_seconds = 0
     for i in range(0, len(times_list)-1, 2):
