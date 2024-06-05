@@ -1,14 +1,16 @@
 import pytesseract
-import re
+import re, os
 import telebot
 from telebot import types
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
 
+load_dotenv()
 
 tg_bot = telebot.TeleBot(os.getenv('TG_BOT_TOKEN'))
 tg_group = os.getenv('TG_GROUP_ID')
 
-@tl_bot.message_handler(func=lambda message: message.chat.id == group_id_to_listen, content_types=['text', 'photo'])    
+@tg_bot.message_handler(content_types=['text', 'photo'])    
 def handle_message(message):
     # Create a markup with Yes and No buttons
     markup = types.InlineKeyboardMarkup()
@@ -19,15 +21,16 @@ def handle_message(message):
     if message.chat.type == 'photo':
         result = time_from_photo(message.photo[-1])
         # Send a confirmation message with the markup
-        tg_bot.send_message(message.chat.id, f"Is {result} it correct?", reply_markup=markup)
-    elif contains_time(message.text):
-        # check if it's time data
-        # saves it
-        # Otherwise continue
-        pass
+        tg_bot.send_message(message.chat.id, f"Is {result} correct?", reply_markup=markup)
     else:
-        tl_bot.send_message(message.chat.id, "I don't understand it.")
-        ask_for_confirmation(message)
+        time_data = contains_time(message.text)
+        if time_data[0]:
+            # check data
+            tg_bot.send_message(message.chat.id, f"Is {time_data[1]} correct?", reply_markup=markup)
+            # saves it
+        else:
+            tg_bot.send_message(message.chat.id, "I don't understand it... 🤨")
+        
 
 @tg_bot.callback_query_handler(func=lambda call: True)
 def handle_callback_query(call):
@@ -41,8 +44,12 @@ def handle_callback_query(call):
         # Ask again?
         tg_bot.answer_callback_query(call.id, "Please send the data again")
         tg_bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Please send the data again", reply_markup=None)
-# Runs bot forever
-tg_bot.polling()
+
+def contains_time(text):
+    # Search for the regex time pattern in the text
+    match = re.search(r'\b(?:[01]\d|2[0-3]):[0-5]\d\b', text)
+    if match: return (True, match.group())
+    else: return (False, None)
 
 def elapsed_time(times_list):
     total_seconds = 0
