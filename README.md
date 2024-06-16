@@ -7,4 +7,4 @@ Project created for personal use, designed to track time just sending a picture.
 - Extracts time data from printed documents
 - Records it into a Google Sheets file
 - Returns the time as a message response
-- Process data (as you wish)
+- Process data
