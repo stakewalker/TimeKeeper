@@ -10,26 +10,38 @@ load_dotenv()
 tg_bot = telebot.TeleBot(os.getenv('TG_BOT_TOKEN'))
 tg_group = os.getenv('TG_GROUP_ID')
 
-@tg_bot.message_handler(content_types=['text', 'photo'])    
-def handle_message(message):
-    # Create a markup with Yes and No buttons
-    markup = types.InlineKeyboardMarkup()
-    yes_button = types.InlineKeyboardButton(text="Yes", callback_data="yes")
-    no_button = types.InlineKeyboardButton(text="No", callback_data="no")
-    markup.add(yes_button, no_button)
-    
-    if message.chat.type == 'photo':
-        result = time_from_photo(message.photo[-1])
-        # Send a confirmation message with the markup
-        tg_bot.send_message(message.chat.id, f"Is {result} correct?", reply_markup=markup)
+# Create a markup with Yes and No buttons
+markup = types.InlineKeyboardMarkup()
+yes_button = types.InlineKeyboardButton(text="Yes", callback_data="yes")
+no_button = types.InlineKeyboardButton(text="No", callback_data="no")
+markup.add(yes_button, no_button)
+
+
+# Handle messages containing only text
+@tg_bot.message_handler(content_types=['text'])    
+def handle_text_message(message):
+    time_data = contains_time(message.text)
+    if "..." in message.text:
+        tg_bot.send_message(message.chat.id, f"Quitting!")
+        raise Exception
+        quit()
+    elif time_data[0]:
+        # check data
+        tg_bot.send_message(message.chat.id, f"Is {time_data[1]} correct?", reply_markup=markup)
+        # saves it
     else:
-        time_data = contains_time(message.text)
-        if time_data[0]:
-            # check data
-            tg_bot.send_message(message.chat.id, f"Is {time_data[1]} correct?", reply_markup=markup)
-            # saves it
-        else:
-            tg_bot.send_message(message.chat.id, "I don't understand it... 🤨")
+        tg_bot.send_message(message.chat.id, "I don't understand it... 🤨")
+
+# Handle messages containing photo
+@tg_bot.message_handler(content_types=['photo'])    
+def handle_text_message(message): 
+    try:
+        tg_bot.send_message(message.chat.id, f"You send me a photo 📷")
+        #result = time_from_photo(message.photo[-1])
+        # Send a confirmation message with the markup
+        #tg_bot.send_message(message.chat.id, f"Is {result} correct?", reply_markup=markup)
+    except:
+        tg_bot.send_message(message.chat.id, "Please send another photo...")
         
 
 @tg_bot.callback_query_handler(func=lambda call: True)
