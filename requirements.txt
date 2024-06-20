@@ -1,2 +1,3 @@
-# libraries goes here
-# $ pip freeze > requirements.txt
+pyTelegramBotAPI==4.19.2
+pytesseract==0.3.10
+python-dotenv==1.0.1
