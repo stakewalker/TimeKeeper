@@ -1,6 +1,6 @@
 # TimeKeeper
 
-Project created for personal use, designed to track time just sending a picture. It enables me doing timecard log and monitor worked hours daily, weekly, monthly, etc.
+Project created for personal use, designed to track time just sending a picture. It enables timecard log and monitor worked hours
 
 ## A bot with a mission:
 - Analyzing photos sent on a Telegram channel
