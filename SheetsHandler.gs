@@ -1,4 +1,4 @@
-// This function is triggered when the Google Apps Script receives a HTTP GET request
+// Function triggered when Google Apps Script receives a HTTP GET request
 
 function doGet(e) {
   // Extract the 'action' parameter from the request
