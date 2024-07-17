@@ -1,7 +1,7 @@
 import functions
 
 def main():
-    # Keep listening to messages from user
+    # Listen to messages 
     print("TimeKeeper running!")
     while True:
         # Runs bot forever
